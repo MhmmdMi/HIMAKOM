@@ -368,20 +368,20 @@ img {
 /* Organization Structure */
 .organization-structure {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    flex-wrap: wrap; /* Agar foto tetap bisa turun ke baris baru jika layar HP */
+    justify-content: center; /* Agar posisi kartu di tengah */
+    gap: 20px; /* Jarak antar kartu */
 }
 
 .org-card {
-    width: 160px; /* Ukuran ideal untuk tampilan mobile & desktop */
+    /* (100% / 4) dikurangi sedikit untuk jarak/gap */
+    width: calc(25% - 20px); 
+    min-width: 150px; /* Agar saat di HP tidak kekecilan, minimal lebarnya 150px */
     background-color: #ffffff;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .org-card:hover {
@@ -1022,3 +1022,9 @@ img {
 
 <a href="https://teras7.com/..." target="_blank" rel="noopener noreferrer" class="read-more">...</a>
 
+
+@media (max-width: 768px) {
+    .org-card {
+        width: calc(50% - 20px); /* Di HP jadi 2 baris saja supaya jelas */
+    }
+}
