@@ -368,20 +368,20 @@ img {
 /* Organization Structure */
 .organization-structure {
     display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
-    gap: 15px; /* Jarak antar foto */
+    flex-wrap: wrap;
+    justify-content: center
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 .org-card {
-    /* (100% / 4) dikurangi sedikit untuk jarak/gap */
-    width: calc(23% - 16px); 
-    min-width: 160px; /* Agar saat di HP tidak kekecilan, minimal lebarnya 150px */
+    width: 160px; /* Ukuran ideal untuk tampilan mobile & desktop */
     background-color: #ffffff;
     border-radius: 10px;
     overflow: hidden;
-    text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .org-card:hover {
