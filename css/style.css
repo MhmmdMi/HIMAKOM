@@ -368,15 +368,15 @@ img {
 /* Organization Structure */
 .organization-structure {
     display: flex;
-    flex-wrap: wrap; /* Agar foto tetap bisa turun ke baris baru jika layar HP */
-    justify-content: center; /* Agar posisi kartu di tengah */
-    gap: 20px; /* Jarak antar kartu */
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 15px; /* Jarak antar foto */
 }
 
 .org-card {
     /* (100% / 4) dikurangi sedikit untuk jarak/gap */
-    width: calc(25% - 20px); 
-    min-width: 150px; /* Agar saat di HP tidak kekecilan, minimal lebarnya 150px */
+    width: calc(23% - 16px); 
+    min-width: 160px; /* Agar saat di HP tidak kekecilan, minimal lebarnya 150px */
     background-color: #ffffff;
     border-radius: 10px;
     overflow: hidden;
@@ -1028,3 +1028,4 @@ img {
         width: calc(50% - 20px); /* Di HP jadi 2 baris saja supaya jelas */
     }
 }
+
