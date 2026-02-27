@@ -5,6 +5,22 @@
     box-sizing: border-box;
 }
 
+.slogan-item {
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid #e0e0e0;
+    border-left: 5px solid #003366;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.slogan-icon {
+    font-size: 1.2rem;
+    margin-right: 15px;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -1075,6 +1091,7 @@ img {
     color: #444;
     line-height: 1.4;
 }
+
 
 
 
