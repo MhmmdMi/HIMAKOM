@@ -1025,4 +1025,56 @@ img {
     }
 }
 
+/* Judul Tagline */
+.tagline-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Container Slogan */
+.slogan-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Jarak antar slogan */
+    padding: 5px;
+}
+
+/* Kotak Slogan Individu */
+.slogan-item {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-left: 5px solid #003366; /* Warna biru khas HIMAKOM */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* Efek saat kursor di atas kotak */
+.slogan-item:hover {
+    transform: translateX(8px);
+    background-color: #f0f4f8;
+    border-color: #003366;
+}
+
+/* Ikon di samping teks */
+.slogan-icon {
+    font-size: 1.2rem;
+    margin-right: 15px;
+}
+
+/* Gaya Teks Slogan */
+.slogan-item p {
+    margin: 0;
+    font-style: italic;
+    font-weight: 500;
+    color: #444;
+    line-height: 1.4;
+}
+
+
 
