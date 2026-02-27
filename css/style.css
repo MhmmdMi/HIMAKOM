@@ -5,72 +5,6 @@
     box-sizing: border-box;
 }
 
-.struktur-block {
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.struktur-block h3 {
-    color: #003366;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #003366;
-    display: inline-block;
-    padding: 0 15px 5px;
-}
-
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    justify-content: center;
-}
-
-.card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    border-color: #003366;
-}
-
-.card h4 {
-    margin: 0 0 10px;
-    color: #003366;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
-
-.card p {
-    margin: 0;
-    font-weight: bold;
-    font-size: 1rem;
-    color: #333;
-}
-
-.card span {
-    display: block;
-    font-size: 0.8rem;
-    color: #777;
-    margin-top: 5px;
-}
-
-/* Warna Khusus Pimpinan & Koordinator */
-.card.pimpinan {
-    background: #f0f7ff;
-    border: 2px solid #003366;
-}
-
-.card.koordinator {
-    background: #fff9e6;
-    border: 1px solid #f1c40f;
-}
-
 .slogan-item {
     display: flex;
     align-items: center;
@@ -1157,6 +1091,7 @@ img {
     color: #444;
     line-height: 1.4;
 }
+
 
 
 
