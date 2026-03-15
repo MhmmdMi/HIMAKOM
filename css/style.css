@@ -1130,16 +1130,53 @@ img {
 }
 
 
+/* AREA CHAT */
+#chat-display{
+padding:10px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+background:#1f2333;
+}
+
+/* CONTAINER CHAT */
 .chat{
 display:flex;
 align-items:flex-end;
 margin:8px 0;
+max-width:80%;
+font-family:Arial, sans-serif;
 }
 
+/* USER CHAT */
 .chat.user{
 justify-content:flex-end;
+align-self:flex-end;
 }
 
+.chat.user .bubble{
+background:#dcf8c6;
+color:#000;
+padding:8px 12px;
+border-radius:12px 12px 0 12px;
+font-size:14px;
+}
+
+/* BOT CHAT */
+.chat.bot{
+align-self:flex-start;
+}
+
+.chat.bot .bubble{
+background:#f1f1f1;
+color:#111;
+padding:8px 12px;
+border-radius:12px 12px 12px 0;
+font-size:14px;
+border:1px solid #ddd;
+}
+
+/* AVATAR */
 .avatar{
 width:32px;
 height:32px;
@@ -1147,19 +1184,7 @@ border-radius:50%;
 margin-right:6px;
 }
 
-.bubble{
-background:#dcf8c6;
-padding:8px 12px;
-border-radius:12px;
-max-width:70%;
-font-size:14px;
-}
-
-.chat.bot .bubble{
-background:white;
-border:1px solid #ddd;
-}
-
+/* META TIME */
 .meta{
 font-size:10px;
 color:#666;
@@ -1167,17 +1192,19 @@ margin-top:3px;
 text-align:right;
 }
 
+/* TYPING */
 .typing{
 display:flex;
 gap:4px;
+padding:6px 4px;
 }
 
 .typing span{
 width:6px;
 height:6px;
-background:#999;
+background:#888;
 border-radius:50%;
-animation:typing 1.3s infinite;
+animation:typing 1.2s infinite;
 }
 
 .typing span:nth-child(2){
@@ -1193,9 +1220,3 @@ animation-delay:0.4s;
 50%{opacity:1}
 100%{opacity:0.3}
 }
-
-
-
-
-
-
