@@ -253,3 +253,26 @@ function getChatTime() {
 
   return h + ":" + m;
 }
+
+
+
+function showSuggestions(){
+
+const display=document.getElementById("chat-display")
+
+display.innerHTML+=`
+<div class="chat bot">
+<img src="images/ai.png" class="avatar">
+<div class="bubble">
+Mungkin kamu ingin menanyakan:<br><br>
+
+<button onclick="quickAsk('Ketua HIMAKOM')">Ketua HIMAKOM</button><br>
+<button onclick="quickAsk('Divisi HIMAKOM')">Divisi HIMAKOM</button><br>
+<button onclick="quickAsk('Program kerja HIMAKOM')">Program kerja</button>
+
+</div>
+</div>
+`
+
+display.scrollTop=display.scrollHeight
+}
