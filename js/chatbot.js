@@ -1,183 +1,266 @@
-function toggleChat() {
-    const chat = document.getElementById("chat-container");
+function toggleChat(){
 
-    if (chat.style.display === "flex") {
-        chat.style.display = "none";
-    } else {
-        chat.style.display = "flex";
-    }
+const chat=document.getElementById("chat-container")
+
+if(chat.style.display==="none"){
+chat.style.display="flex"
+}else{
+chat.style.display="none"
 }
 
-function handleSend() {
-    const input = document.getElementById("user-msg");
-    const display = document.getElementById("chat-display");
-
-    const msg = input.value.toLowerCase().trim();
-    if (msg === "") return;
-
-    // tampilkan pesan user
-    display.innerHTML += `<div class="user-msg">${input.value}</div>`;
-
-    let reply = "Maaf, saya belum mengerti pertanyaan tersebut.";
-
-    // =========================
-    // KATA KUNCI CHATBOT
-    // =========================
-
-    if (
-        msg.includes("halo") ||
-        msg.includes("hai") ||
-        msg.includes("hello")
-    ) {
-        reply = "Halo! Selamat datang di website HIMAKOM 👋 Ada yang bisa saya bantu?";
-    }
-
-    else if (
-        msg.includes("himakom") ||
-        msg.includes("apa itu himakom")
-    ) {
-        reply = "HIMAKOM adalah Himpunan Mahasiswa Komputer yang menjadi wadah pengembangan akademik, teknologi, dan kreativitas mahasiswa Ilmu Komputer.";
-    }
-
-    else if (
-        msg.includes("ketua") ||
-        msg.includes("ketua himakom")
-    ) {
-        reply = "Ketua HIMAKOM saat ini adalah [NAMA_KETUA].";
-    }
-
-    else if (
-        msg.includes("visi")
-    ) {
-        reply = "Visi HIMAKOM adalah menjadi organisasi mahasiswa yang unggul dalam pengembangan teknologi, inovasi digital, dan kontribusi bagi masyarakat.";
-    }
-
-    else if (
-        msg.includes("misi")
-    ) {
-        reply = `
-        Misi HIMAKOM:
-        <br>1. Mengembangkan kemampuan teknologi mahasiswa.
-        <br>2. Mendorong inovasi digital.
-        <br>3. Membentuk mahasiswa yang kolaboratif.
-        <br>4. Berkontribusi untuk masyarakat melalui teknologi.
-        `;
-    }
-
-    else if (
-        msg.includes("program kerja") ||
-        msg.includes("proker")
-    ) {
-        reply = "Beberapa program kerja HIMAKOM antara lain: Seminar Teknologi, Workshop Programming, Lomba IT, dan Pengabdian Masyarakat.";
-    }
-
-    else if (
-        msg.includes("kegiatan") ||
-        msg.includes("event")
-    ) {
-        reply = "Kegiatan HIMAKOM meliputi seminar IT, pelatihan coding, lomba teknologi, dan kegiatan pengembangan mahasiswa.";
-    }
-
-    else if (
-        msg.includes("anggota") ||
-        msg.includes("gabung") ||
-        msg.includes("daftar")
-    ) {
-        reply = "Untuk bergabung dengan HIMAKOM, silakan mengikuti Open Recruitment yang biasanya diumumkan melalui website dan media sosial HIMAKOM.";
-    }
-
-    else if (
-        msg.includes("kontak") ||
-        msg.includes("hubungi") ||
-        msg.includes("instagram")
-    ) {
-        reply = "Anda dapat menghubungi HIMAKOM melalui Instagram resmi atau email organisasi yang tersedia di halaman kontak.";
-    }
-
-    else if (
-        msg.includes("terima kasih") ||
-        msg.includes("makasih")
-    ) {
-        reply = "Sama-sama 😊 Senang bisa membantu.";
-    }
-
-    // =========================
-    // TAMPILKAN JAWABAN BOT
-    // =========================
-
-    display.innerHTML += `<div class="bot-msg">${reply}</div>`;
-
-    display.scrollTop = display.scrollHeight;
-    input.value = "";
 }
 
-function toggleChat() {
-    const chat = document.getElementById("chat-container");
-
-    if (chat.style.display === "flex") {
-        chat.style.display = "none";
-    } else {
-        chat.style.display = "flex";
-    }
+function quickAsk(text){
+document.getElementById("user-msg").value=text
+handleSend()
 }
 
-function handleSend() {
-    const input = document.getElementById("user-msg");
-    const display = document.getElementById("chat-display");
+function handleSend(){
 
-    let msg = input.value.toLowerCase().trim();
-    if (msg === "") return;
+const input=document.getElementById("user-msg")
+const display=document.getElementById("chat-display")
 
-    display.innerHTML += `<div class="user-message">${input.value}</div>`;
+const msg=input.value.toLowerCase().trim()
+if(msg==="") return
 
-    let reply = "Maaf, saya belum mengerti pertanyaan itu. Silakan tanyakan tentang HIMAKOM.";
+display.innerHTML+=`
+<div class="chat user">
+<div class="name">Anda</div>
+<div class="bubble">${input.value}</div>
+</div>
+`
 
-    if (msg.includes("halo") || msg.includes("hai") || msg.includes("hi")) {
-        reply = "Halo 👋 Selamat datang di website HIMAKOM. Ada yang bisa saya bantu?";
-    }
+let reply="Maaf saya belum memahami pertanyaan tersebut."
 
-    else if (msg.includes("himakom") || msg.includes("apa itu himakom")) {
-        reply = "HIMAKOM adalah Himpunan Mahasiswa Ilmu Komputer yang menjadi wadah mahasiswa untuk berkembang dalam bidang teknologi, organisasi, dan inovasi digital.";
-    }
+// =====================
+// PERTANYAAN UMUM
+// =====================
 
-    else if (msg.includes("ketua") || msg.includes("ketua himakom")) {
-        reply = "Ketua HIMAKOM saat ini adalah [ISI NAMA KETUA].";
-    }
+if(msg.includes("halo")||msg.includes("hai")){
+reply="Halo 👋 Saya AI HIMAKOM. Silakan tanyakan tentang organisasi HIMAKOM."
+}
 
-    else if (msg.includes("visi")) {
-        reply = "Visi HIMAKOM adalah menjadi organisasi mahasiswa yang inovatif, kolaboratif, dan berkontribusi dalam pengembangan teknologi untuk masyarakat.";
-    }
+else if(msg.includes("siapa kamu")){
+reply="Saya adalah AI HIMAKOM, asisten virtual website HIMAKOM."
+}
 
-    else if (msg.includes("misi")) {
-        reply = "Misi HIMAKOM meliputi: meningkatkan kompetensi mahasiswa, mengembangkan project teknologi, serta membangun kolaborasi dengan berbagai pihak.";
-    }
+else if(msg.includes("apa itu himakom")||msg.includes("himakom")){
+reply="HIMAKOM adalah Himpunan Mahasiswa Ilmu Komputer yang menjadi wadah pengembangan akademik, teknologi, dan kreativitas mahasiswa."
+}
 
-    else if (msg.includes("program kerja") || msg.includes("proker")) {
-        reply = "Beberapa program kerja HIMAKOM antara lain: Seminar Teknologi, Workshop Programming, Lomba IT, dan Pengabdian Masyarakat berbasis teknologi.";
-    }
+// =====================
+// STRUKTUR ORGANISASI
+// =====================
 
-    else if (msg.includes("divisi") || msg.includes("bidang")) {
-        reply = "HIMAKOM memiliki beberapa divisi seperti: Divisi Pendidikan, Divisi Media & Informasi, Divisi Riset & Teknologi, serta Divisi Humas.";
-    }
+else if(msg.includes("ketua")){
+reply=`
+Ketua HIMAKOM<br>
+• Muhammad Halim Ihsan
+`
+}
 
-    else if (msg.includes("anggota") || msg.includes("gabung") || msg.includes("daftar")) {
-        reply = "Untuk bergabung dengan HIMAKOM, mahasiswa Ilmu Komputer dapat mengikuti Open Recruitment yang biasanya dibuka setiap awal semester.";
-    }
+else if(msg.includes("wakil ketua")){
+reply=`
+Wakil Ketua HIMAKOM<br>
+• [Nama Wakil Ketua]
+`
+}
 
-    else if (msg.includes("kegiatan") || msg.includes("event")) {
-        reply = "HIMAKOM sering mengadakan kegiatan seperti workshop coding, seminar IT, lomba teknologi, dan kegiatan sosial.";
-    }
+else if(msg.includes("sekretaris")){
+reply=`
+Sekretaris HIMAKOM<br>
+• Sekretaris 1 : [Nama Sekretaris 1]<br>
+• Sekretaris 2 : [Nama Sekretaris 2]
+`
+}
 
-    else if (msg.includes("kontak") || msg.includes("hubungi")) {
-        reply = "Anda dapat menghubungi HIMAKOM melalui Instagram atau email resmi yang tersedia di halaman kontak website.";
-    }
+else if(msg.includes("bendahara")){
+reply=`
+Bendahara HIMAKOM<br>
+• Bendahara 1 : [Nama Bendahara 1]<br>
+• Bendahara 2 : [Nama Bendahara 2]
+`
+}
 
-    else if (msg.includes("terima kasih") || msg.includes("thanks")) {
-        reply = "Sama-sama 😊 Senang bisa membantu.";
-    }
+// =====================
+// DIVISI
+// =====================
 
-    display.innerHTML += `<div class="bot-message">${reply}</div>`;
+else if(msg.includes("divisi")||msg.includes("bidang")){
+reply=`
+Divisi HIMAKOM terdiri dari:<br><br>
 
-    display.scrollTop = display.scrollHeight;
-    input.value = "";
+1️⃣ Divisi Pendidikan<br>
+2️⃣ Divisi Riset & Teknologi<br>
+3️⃣ Divisi Media & Informasi<br>
+4️⃣ Divisi Humas<br>
+5️⃣ Divisi Pengembangan SDM
+`
+}
+
+// =====================
+// DETAIL DIVISI
+// =====================
+
+else if(msg.includes("divisi pendidikan")){
+reply=`
+Divisi Pendidikan<br><br>
+
+Koordinator:<br>
+• [Nama Koordinator]
+
+Anggota:<br>
+• [Anggota 1]<br>
+• [Anggota 2]<br>
+• [Anggota 3]
+`
+}
+
+else if(msg.includes("divisi riset")||msg.includes("riset teknologi")){
+reply=`
+Divisi Riset & Teknologi<br><br>
+
+Koordinator:<br>
+• [Nama Koordinator]
+
+Anggota:<br>
+• [Anggota 1]<br>
+• [Anggota 2]<br>
+• [Anggota 3]
+`
+}
+
+else if(msg.includes("divisi media")){
+reply=`
+Divisi Media & Informasi<br><br>
+
+Koordinator:<br>
+• [Nama Koordinator]
+
+Anggota:<br>
+• [Anggota 1]<br>
+• [Anggota 2]<br>
+• [Anggota 3]
+`
+}
+
+else if(msg.includes("divisi humas")){
+reply=`
+Divisi Hubungan Masyarakat (Humas)<br><br>
+
+Koordinator:<br>
+• [Nama Koordinator]
+
+Anggota:<br>
+• [Anggota 1]<br>
+• [Anggota 2]
+`
+}
+
+else if(msg.includes("divisi sdm")||msg.includes("pengembangan sdm")){
+reply=`
+Divisi Pengembangan SDM<br><br>
+
+Koordinator:<br>
+• [Nama Koordinator]
+
+Anggota:<br>
+• [Anggota 1]<br>
+• [Anggota 2]
+`
+}
+
+// =====================
+// VISI MISI
+// =====================
+
+else if(msg.includes("visi")){
+reply="Visi HIMAKOM adalah menjadi organisasi mahasiswa yang unggul dalam teknologi dan inovasi digital."
+}
+
+else if(msg.includes("misi")){
+reply=`
+Misi HIMAKOM:<br>
+1. Mengembangkan kemampuan teknologi mahasiswa<br>
+2. Mendorong inovasi digital<br>
+3. Membangun kolaborasi mahasiswa<br>
+4. Berkontribusi kepada masyarakat melalui teknologi
+`
+}
+
+// =====================
+// PROGRAM KERJA
+// =====================
+
+else if(msg.includes("proker")||msg.includes("program kerja")){
+reply=`
+Program kerja HIMAKOM:<br><br>
+
+• Seminar Teknologi<br>
+• Workshop Programming<br>
+• Lomba IT<br>
+• Pelatihan Coding<br>
+• Pengabdian Masyarakat
+`
+}
+
+// =====================
+// KEGIATAN
+// =====================
+
+else if(msg.includes("kegiatan")||msg.includes("event")){
+reply="HIMAKOM sering mengadakan seminar IT, workshop coding, lomba teknologi, dan kegiatan pengembangan mahasiswa."
+}
+
+// =====================
+// PENDAFTARAN
+// =====================
+
+else if(msg.includes("gabung")||msg.includes("anggota")){
+reply="Untuk bergabung dengan HIMAKOM silakan mengikuti Open Recruitment yang diumumkan melalui media sosial HIMAKOM."
+}
+
+// =====================
+// KONTAK
+// =====================
+
+else if(msg.includes("kontak")||msg.includes("instagram")){
+reply="Anda dapat menghubungi HIMAKOM melalui Instagram resmi organisasi."
+}
+
+else if(msg.includes("terima kasih")){
+reply="Sama-sama 😊 Senang membantu."
+}
+
+// =====================
+// EFEK MENGETIK
+// =====================
+
+const typing=`
+<div class="chat bot" id="typing">
+<div class="name">AI HIMAKOM</div>
+<div class="bubble">Mengetik...</div>
+</div>
+`
+
+display.innerHTML+=typing
+display.scrollTop=display.scrollHeight
+
+setTimeout(()=>{
+
+document.getElementById("typing").remove()
+
+display.innerHTML+=`
+<div class="chat bot">
+<div class="name">AI HIMAKOM</div>
+<div class="bubble">${reply}</div>
+</div>
+`
+
+display.scrollTop=display.scrollHeight
+
+},800)
+
+input.value=""
+
 }
