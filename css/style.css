@@ -1220,3 +1220,28 @@ animation-delay:0.4s;
 50%{opacity:1}
 100%{opacity:0.3}
 }
+
+
+#quick-questions{
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+padding:8px;
+border-top:1px solid #ddd;
+background:#2a2f45;
+}
+
+#quick-questions button{
+background:#3a3f5a;
+border:none;
+color:white;
+padding:6px 10px;
+border-radius:15px;
+font-size:12px;
+cursor:pointer;
+transition:0.2s;
+}
+
+#quick-questions button:hover{
+background:#5865f2;
+}
