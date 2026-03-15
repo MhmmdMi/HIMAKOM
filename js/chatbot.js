@@ -92,11 +92,11 @@ else if(msg.includes("divisi")||msg.includes("bidang")){
 reply=`
 Divisi HIMAKOM terdiri dari:<br><br>
 
-1️⃣ Divisi Pendidikan<br>
-2️⃣ Divisi Riset & Teknologi<br>
-3️⃣ Divisi Media & Informasi<br>
+1️⃣ Divisi Pendidikan dan Keilmuan<br>
+2️⃣ Divisi Riset dan Teknologi<br>
+3️⃣ Divisi Minat dan Bakat<br>
 4️⃣ Divisi Humas<br>
-5️⃣ Divisi Pengembangan SDM
+5️⃣ Anggota HIMAKOM
 `
 }
 
