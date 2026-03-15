@@ -25,8 +25,10 @@ if(msg==="") return
 
 display.innerHTML+=`
 <div class="chat user">
-<div class="name">Anda</div>
-<div class="bubble">${input.value}</div>
+<div class="bubble">
+${input.value}
+<div class="meta">${getChatTime()} ✓✓</div>
+</div>
 </div>
 `
 
@@ -238,8 +240,12 @@ reply="Sama-sama 😊 Senang membantu."
 
 const typing=`
 <div class="chat bot" id="typing">
-<div class="name">AI HIMAKOM</div>
-<div class="bubble">Mengetik...</div>
+<img src="images/ai.png" class="avatar">
+<div class="bubble typing">
+<span></span>
+<span></span>
+<span></span>
+</div>
 </div>
 `
 
@@ -252,8 +258,11 @@ document.getElementById("typing").remove()
 
 display.innerHTML+=`
 <div class="chat bot">
-<div class="name">AI HIMAKOM</div>
-<div class="bubble">${reply}</div>
+<img src="images/ai.png" class="avatar">
+<div class="bubble">
+${reply}
+<div class="meta">${getChatTime()}</div>
+</div>
 </div>
 `
 
