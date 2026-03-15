@@ -240,3 +240,16 @@ lightbox.addEventListener("click", (e) => {
     lightbox.classList.remove("active");
   }
 });
+
+// ======================
+// CHATBOT TIME FUNCTION
+// ======================
+function getChatTime() {
+  const now = new Date();
+  let h = now.getHours();
+  let m = now.getMinutes();
+
+  if (m < 10) m = "0" + m;
+
+  return h + ":" + m;
+}
