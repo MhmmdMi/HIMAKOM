@@ -64,23 +64,23 @@ Ketua HIMAKOM<br>
 else if(msg.includes("wakil ketua")){
 reply=`
 Wakil Ketua HIMAKOM<br>
-• [Nama Wakil Ketua]
+• Andriani
 `
 }
 
 else if(msg.includes("sekretaris")){
 reply=`
 Sekretaris HIMAKOM<br>
-• Sekretaris 1 : [Nama Sekretaris 1]<br>
-• Sekretaris 2 : [Nama Sekretaris 2]
+• Sekretaris 1 : [Riska Maulida 1]<br>
+• Sekretaris 2 : [Siti Hasanah 2]
 `
 }
 
 else if(msg.includes("bendahara")){
 reply=`
 Bendahara HIMAKOM<br>
-• Bendahara 1 : [Nama Bendahara 1]<br>
-• Bendahara 2 : [Nama Bendahara 2]
+• Bendahara 1 : [Siti Munirah 1]<br>
+• Bendahara 2 : [Rahmida Ariani 2]
 `
 }
 
@@ -109,40 +109,42 @@ reply=`
 Divisi Pendidikan<br><br>
 
 Koordinator:<br>
-• [Nama Koordinator]
+• Riantama Saputra
 
 Anggota:<br>
-• [Anggota 1]<br>
-• [Anggota 2]<br>
-• [Anggota 3]
+• Hayatun Nisa<br>
+• Husniyaturridha<br>
+• Ediy Winata<br>
+• Radiati<br>
 `
 }
 
-else if(msg.includes("divisi riset")||msg.includes("riset teknologi")){
+else if(msg.includes("divisi penelitian")||msg.includes("penelitian teknologi")){
 reply=`
 Divisi Riset & Teknologi<br><br>
 
 Koordinator:<br>
-• [Nama Koordinator]
+• Muhammad Akbar
 
 Anggota:<br>
-• [Anggota 1]<br>
-• [Anggota 2]<br>
-• [Anggota 3]
+• Abdul Hakim<br>
+• Hadi Rusadi<br>
+• Arbaniah Heliany<br>
+• Muhammad Randu<br>
 `
 }
 
-else if(msg.includes("divisi media")){
+else if(msg.includes("anggota HIMAKOM")){
 reply=`
-Divisi Media & Informasi<br><br>
+Anggota HIMAKOM<br><br>
 
-Koordinator:<br>
-• [Nama Koordinator]
 
 Anggota:<br>
-• [Anggota 1]<br>
-• [Anggota 2]<br>
-• [Anggota 3]
+• Marlina<br>
+• Irwin Mujahidin<br>
+• Emelia Hartati <br>
+• Sayyid Akhmad Husain<br>
+• M. Riduan Safutra<br>
 `
 }
 
@@ -151,24 +153,28 @@ reply=`
 Divisi Hubungan Masyarakat (Humas)<br><br>
 
 Koordinator:<br>
-• [Nama Koordinator]
+• Delima Rahmawati
 
 Anggota:<br>
-• [Anggota 1]<br>
-• [Anggota 2]
+• Hanisa<br>
+• Muhammad Farhan<br>
+• M. Nafiz Artana<br>
+• Siti Al Munawarah<br>
 `
 }
 
-else if(msg.includes("divisi sdm")||msg.includes("pengembangan sdm")){
+else if(msg.includes("divisi minat dan bakat")){
 reply=`
-Divisi Pengembangan SDM<br><br>
+Divisi Minat dan Bakat<br><br>
 
 Koordinator:<br>
-• [Nama Koordinator]
+• Tiara
 
 Anggota:<br>
-• [Anggota 1]<br>
-• [Anggota 2]
+•  Riski Amelia<br>
+•  Aulia Rahmah<br>
+•  Fanisa Widya <br>
+•  M. Irza Arisandi<br>
 `
 }
 
@@ -177,16 +183,16 @@ Anggota:<br>
 // =====================
 
 else if(msg.includes("visi")){
-reply="Visi HIMAKOM adalah menjadi organisasi mahasiswa yang unggul dalam teknologi dan inovasi digital."
+reply="Menciptakan ekosistem daerah cerdas (Smart Region) yang terhubung, transparan, dan berkeadilan demi meningkatkan kualitas hidup masyarakat."
 }
 
 else if(msg.includes("misi")){
 reply=`
 Misi HIMAKOM:<br>
-1. Mengembangkan kemampuan teknologi mahasiswa<br>
-2. Mendorong inovasi digital<br>
-3. Membangun kolaborasi mahasiswa<br>
-4. Berkontribusi kepada masyarakat melalui teknologi
+1. Infrastruktur Digital: Mengadvokasi dan berpartisipasi dalam pembangunan infrastruktur digital yang merata hingga ke pelosok daerah.<br>
+2. Data-Driven Decision: Mendorong penggunaan data dan analitik dalam setiap pengambilan keputusan kebijakan pembangunan daerah.<br>
+3. Partisipasi Publik: Mengembangkan platform digital yang mempermudah partisipasi masyarakat dalam pengawasan dan pembangunan daerah (e-governance).<br>
+4. Keberlanjutan: Memanfaatkan teknologi hijau (green tech) untuk memastikan kemajuan daerah tidak merusak lingkungan.<br>
 `
 }
 
@@ -200,7 +206,6 @@ Program kerja HIMAKOM:<br><br>
 
 • Seminar Teknologi<br>
 • Workshop Programming<br>
-• Lomba IT<br>
 • Pelatihan Coding<br>
 • Pengabdian Masyarakat
 `
