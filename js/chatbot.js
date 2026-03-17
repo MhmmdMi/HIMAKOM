@@ -46,7 +46,7 @@ else if(msg.includes("siapa kamu")){
 reply="Saya adalah AI HIMAKOM, asisten virtual website HIMAKOM."
 }
 
-else if(msg.includes("apa itu himakom")||msg.includes("himakom")){
+else if(msg.includes("apa itu himakom")||msg==="himakom"){
 reply="HIMAKOM adalah Himpunan Mahasiswa Ilmu Komputer yang menjadi wadah pengembangan akademik, teknologi, dan kreativitas mahasiswa."
 }
 
@@ -71,21 +71,97 @@ Wakil Ketua HIMAKOM<br>
 else if(msg.includes("sekretaris")){
 reply=`
 Sekretaris HIMAKOM<br>
-• Sekretaris 1 : [Riska Maulida 1]<br>
-• Sekretaris 2 : [Siti Hasanah 2]
+• Sekretaris 1 : Riska Maulida<br>
+• Sekretaris 2 : Siti Hasanah
 `
 }
 
 else if(msg.includes("bendahara")){
 reply=`
 Bendahara HIMAKOM<br>
-• Bendahara 1 : [Siti Munirah 1]<br>
-• Bendahara 2 : [Rahmida Ariani 2]
+• Bendahara 1 : Siti Munirah<br>
+• Bendahara 2 : Rahmida Ariani
 `
 }
 
 // =====================
-// DIVISI
+// DETAIL DIVISI (SPESIFIK DULU)
+// =====================
+
+else if(msg.includes("minat dan bakat") || msg.includes("minat bakat")){
+reply=`
+Divisi Minat dan Bakat<br><br>
+
+Koordinator:<br>
+• Tiara<br><br>
+
+Anggota:<br>
+• Riski Amelia<br>
+• Aulia Rahmah<br>
+• Fanisa Widya<br>
+• M. Irza Arisandi
+`
+}
+
+else if(msg.includes("divisi pendidikan")){
+reply=`
+Divisi Pendidikan<br><br>
+
+Koordinator:<br>
+• Riantama Saputra<br><br>
+
+Anggota:<br>
+• Hayatun Nisa<br>
+• Husniyaturridha<br>
+• Ediy Winata<br>
+• Radiati
+`
+}
+
+else if(msg.includes("penelitian")||msg.includes("riset")){
+reply=`
+Divisi Riset & Teknologi<br><br>
+
+Koordinator:<br>
+• Muhammad Akbar<br><br>
+
+Anggota:<br>
+• Abdul Hakim<br>
+• Hadi Rusadi<br>
+• Arbaniah Heliany<br>
+• Muhammad Randu
+`
+}
+
+else if(msg.includes("divisi humas")){
+reply=`
+Divisi Hubungan Masyarakat (Humas)<br><br>
+
+Koordinator:<br>
+• Delima Rahmawati<br><br>
+
+Anggota:<br>
+• Hanisa<br>
+• Muhammad Farhan<br>
+• M. Nafiz Artana<br>
+• Siti Al Munawarah
+`
+}
+
+else if(msg.includes("anggota himakom")){
+reply=`
+Anggota HIMAKOM<br><br>
+
+• Marlina<br>
+• Irwin Mujahidin<br>
+• Emelia Hartati<br>
+• Sayyid Akhmad Husain<br>
+• M. Riduan Safutra
+`
+}
+
+// =====================
+// LIST SEMUA DIVISI
 // =====================
 
 else if(msg.includes("divisi")||msg.includes("bidang")){
@@ -101,98 +177,6 @@ Divisi HIMAKOM terdiri dari:<br><br>
 }
 
 // =====================
-// DETAIL DIVISI
-// =====================
-
-else if(msg.includes("divisi pendidikan")){
-reply=`
-Divisi Pendidikan<br><br>
-
-Koordinator:<br>
-• Riantama Saputra
-
-Anggota:<br>
-• Hayatun Nisa<br>
-• Husniyaturridha<br>
-• Ediy Winata<br>
-• Radiati<br>
-`
-}
-
-else if(msg.includes("divisi penelitian")||msg.includes("penelitian teknologi")){
-reply=`
-Divisi Riset & Teknologi<br><br>
-
-Koordinator:<br>
-• Muhammad Akbar
-
-Anggota:<br>
-• Abdul Hakim<br>
-• Hadi Rusadi<br>
-• Arbaniah Heliany<br>
-• Muhammad Randu<br>
-`
-}
-
-else if(msg.includes("anggota HIMAKOM")){
-reply=`
-Anggota HIMAKOM<br><br>
-
-
-Anggota:<br>
-• Marlina<br>
-• Irwin Mujahidin<br>
-• Emelia Hartati <br>
-• Sayyid Akhmad Husain<br>
-• M. Riduan Safutra<br>
-`
-}
-
-else if(msg.includes("divisi humas")){
-reply=`
-Divisi Hubungan Masyarakat (Humas)<br><br>
-
-Koordinator:<br>
-• Delima Rahmawati
-
-Anggota:<br>
-• Hanisa<br>
-• Muhammad Farhan<br>
-• M. Nafiz Artana<br>
-• Siti Al Munawarah<br>
-`
-}
-
-else if(msg.includes("divisi minat dan bakat")){
-reply=`
-    Divisi Minat dan Bakat<br><br>
-
-Koordinator:<br>
-• Tiara
-
-Anggota:<br>
-•  Riski Amelia<br>
-•  Aulia Rahmah<br>
-•  Fanisa Widya <br>
-•  M.Irza Arisandi<br>
-`
-}
-    
-}
-Divisi Minat dan Bakat<br><br>
-
-Koordinator:<br>
-• Tiara
-
-Anggota:<br>
-•  Riski Amelia<br>
-•  Aulia Rahmah<br>
-•  Fanisa Widya <br>
-•  M. Irza Arisandi<br>
-`
-}
-
-// =====================
 // VISI MISI
 // =====================
 
@@ -203,10 +187,10 @@ reply="Menciptakan ekosistem daerah cerdas (Smart Region) yang terhubung, transp
 else if(msg.includes("misi")){
 reply=`
 Misi HIMAKOM:<br>
-1. Infrastruktur Digital: Mengadvokasi dan berpartisipasi dalam pembangunan infrastruktur digital yang merata hingga ke pelosok daerah.<br>
-2. Data-Driven Decision: Mendorong penggunaan data dan analitik dalam setiap pengambilan keputusan kebijakan pembangunan daerah.<br>
-3. Partisipasi Publik: Mengembangkan platform digital yang mempermudah partisipasi masyarakat dalam pengawasan dan pembangunan daerah (e-governance).<br>
-4. Keberlanjutan: Memanfaatkan teknologi hijau (green tech) untuk memastikan kemajuan daerah tidak merusak lingkungan.<br>
+1. Infrastruktur Digital<br>
+2. Data-Driven Decision<br>
+3. Partisipasi Publik<br>
+4. Keberlanjutan Teknologi
 `
 }
 
@@ -237,7 +221,7 @@ reply="HIMAKOM sering mengadakan seminar IT, workshop coding, lomba teknologi, d
 // PENDAFTARAN
 // =====================
 
-else if(msg.includes("gabung")||msg.includes("anggota")){
+else if(msg.includes("gabung")){
 reply="Untuk bergabung dengan HIMAKOM silakan mengikuti Open Recruitment yang diumumkan melalui media sosial HIMAKOM."
 }
 
