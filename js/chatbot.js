@@ -1,6 +1,6 @@
 function toggleChat() {
     const chat = document.getElementById("chat-container")
-    if (chat.style.display === "none") {
+    if (chat.style.display === "none" || chat.style.display === "") {
         chat.style.display = "flex"
     } else {
         chat.style.display = "none"
@@ -60,7 +60,7 @@ function handleSend() {
     }
 
     // =====================
-    // DETAIL DIVISI (DITEMPATKAN DI ATAS AGAR SPESIFIK)
+    // DETAIL DIVISI (CEK SPESIFIK DULU - SESUAI GAMBAR)
     // =====================
     else if (msg.includes("divisi pendidikan")) {
         reply = `
@@ -109,7 +109,7 @@ function handleSend() {
         • Siti Al Munawarah<br>
         `
     } 
-    else if (msg.includes("divisi minat dan bakat")) {
+    else if (msg.includes("divisi minat dan bakat") || msg.includes("minat dan bakat")) {
         reply = `
         Divisi Minat dan Bakat<br><br>
         Koordinator:<br>
@@ -123,7 +123,7 @@ function handleSend() {
     }
 
     // =====================
-    // LIST DIVISI UMUM (DIBAWAH AGAR TIDAK BENTROK)
+    // LIST DIVISI UMUM (CEK TERAKHIR)
     // =====================
     else if (msg.includes("divisi") || msg.includes("bidang")) {
         reply = `
@@ -143,30 +143,16 @@ function handleSend() {
         reply = "Menciptakan ekosistem daerah cerdas (Smart Region) yang terhubung, transparan, dan berkeadilan demi meningkatkan kualitas hidup masyarakat."
     } 
     else if (msg.includes("misi")) {
-        reply = `
-        Misi HIMAKOM:<br>
-        1. Infrastruktur Digital: Mengadvokasi dan berpartisipasi dalam pembangunan infrastruktur digital yang merata hingga ke pelosok daerah.<br>
-        2. Data-Driven Decision: Mendorong penggunaan data dan analitik dalam setiap pengambilan keputusan kebijakan pembangunan daerah.<br>
-        3. Partisipasi Publik: Mengembangkan platform digital yang mempermudah partisipasi masyarakat dalam pengawasan dan pembangunan daerah (e-governance).<br>
-        4. Keberlanjutan: Memanfaatkan teknologi hijau (green tech) untuk memastikan kemajuan daerah tidak merusak lingkungan.<br>
-        `
+        reply = "Misi HIMAKOM meliputi Infrastruktur Digital, Data-Driven Decision, Partisipasi Publik, dan Keberlanjutan."
     }
-    else if (msg.includes("proker") || msg.includes("program kerja")) {
-        reply = `Program kerja HIMAKOM:<br><br>• Seminar Teknologi<br>• Workshop Programming<br>• Pelatihan Coding<br>• Pengabdian Masyarakat`
-    } 
     else if (msg.includes("terima kasih")) {
         reply = "Sama-sama 😊 Senang membantu."
     }
 
     // =====================
-    // EFEK MENGETIK & TAMPILAN
+    // PROSES TAMPILAN BOT
     // =====================
-    const typing = `
-    <div class="chat bot" id="typing">
-        <img src="images/ai.png" class="avatar">
-        <div class="bubble typing"><span></span><span></span><span></span></div>
-    </div>`
-
+    const typing = `<div class="chat bot" id="typing"><img src="images/ai.png" class="avatar"><div class="bubble typing"><span></span><span></span><span></span></div></div>`
     display.innerHTML += typing
     display.scrollTop = display.scrollHeight
 
