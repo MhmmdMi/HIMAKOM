@@ -165,6 +165,23 @@ Anggota:<br>
 
 else if(msg.includes("divisi minat dan bakat")){
 reply=`
+// Mengubah input user (msg) menjadi huruf kecil semua 
+// dan mengecek kata kuncinya saja
+else if(msg.toLowerCase().includes("minat dan bakat")){
+    reply=`
+    Divisi Minat dan Bakat<br><br>
+    Koordinator:<br>
+• Tiara
+
+Anggota:<br>
+•  Riski Amelia<br>
+•  Aulia Rahmah<br>
+•  Fanisa Widya <br>
+•  M.Irza Arisandi<br>
+`
+}
+    
+}
 Divisi Minat dan Bakat<br><br>
 
 Koordinator:<br>
