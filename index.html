@@ -33,6 +33,12 @@
     </div>
 </div>
 <button id="chat-toggle-btn" onclick="toggleChat()">💬</button>
+    <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+</body>
 <body>
 
 
