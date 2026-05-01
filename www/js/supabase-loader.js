@@ -1,12 +1,16 @@
-// Supabase Loader for Berita and Galeri
+// Supabase Loader - Sinkron dengan index.html
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("Supabase Loader Started...");
   muatBerita();
   muatGaleri();
 });
 
 async function muatBerita() {
-  const container = document.getElementById("berita-container");
-  if (!container) return;
+  const container = document.getElementById("berita-container"); // Pastikan ID ini sama dengan di index.html
+  if (!container) {
+    console.error("Container berita-container tidak ditemukan!");
+    return;
+  }
 
   try {
     const { data, error } = await supabase
@@ -21,10 +25,6 @@ async function muatBerita() {
       data.forEach((item) => {
         const article = document.createElement("article");
         article.className = "news-card";
-        article.style.opacity = "0";
-        article.style.transform = "translateY(20px)";
-        article.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-
         article.innerHTML = `
           <div class="news-image">
             <img src="${item.gambar_url || "images/Berita1.jpeg"}" alt="${item.judul}" onerror="this.src='images/Berita1.jpeg'">
@@ -37,13 +37,9 @@ async function muatBerita() {
         `;
         container.appendChild(article);
       });
-
-      // Trigger animation for new elements
-      setTimeout(() => {
-        window.dispatchEvent(new Event("scroll"));
-      }, 100);
+      console.log("Berita berhasil dimuat:", data.length);
     } else {
-      container.innerHTML = "<p>Tidak ada berita saat ini.</p>";
+      container.innerHTML = "<p style='text-align:center; color:#888;'>Belum ada berita terbaru.</p>";
     }
   } catch (err) {
     console.error("Error loading berita:", err);
@@ -52,7 +48,7 @@ async function muatBerita() {
 }
 
 async function muatGaleri() {
-  const container = document.getElementById("galeri-container");
+  const container = document.getElementById("galeri-container"); // Pastikan ID ini sama dengan di index.html
   if (!container) return;
 
   try {
@@ -68,10 +64,6 @@ async function muatGaleri() {
       data.forEach((item) => {
         const div = document.createElement("div");
         div.className = "gallery-item";
-        div.style.opacity = "0";
-        div.style.transform = "translateY(20px)";
-        div.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-
         div.innerHTML = `
           <img src="${item.gambar_url || "images/Galeri1.JPG"}" alt="${item.judul}" onerror="this.src='images/Galeri1.JPG'">
           <div class="gallery-overlay">
@@ -81,26 +73,18 @@ async function muatGaleri() {
             </div>
           </div>
         `;
-
-        // Re-attach click event for lightbox since these are dynamic
+        // Re-attach lightbox
         div.addEventListener("click", () => {
             if (typeof openLightbox === 'function') {
                 openLightbox(item.gambar_url || "images/Galeri1.JPG", item.judul, item.keterangan || "");
             }
         });
-
         container.appendChild(div);
       });
-
-      // Trigger animation for new elements
-      setTimeout(() => {
-        window.dispatchEvent(new Event("scroll"));
-      }, 100);
     } else {
-      container.innerHTML = "<p>Tidak ada galeri saat ini.</p>";
+      container.innerHTML = "<p style='text-align:center; color:#888;'>Belum ada foto galeri.</p>";
     }
   } catch (err) {
     console.error("Error loading galeri:", err);
-    container.innerHTML = "<p>Gagal memuat galeri.</p>";
   }
 }

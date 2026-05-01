@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - HIMAKOM</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        :root { --primary: #0d6efd; --dark: #1a3a6b; }
+        body { font-family: 'Poppins', sans-serif; background: #f4f7fe; padding: 20px; }
+        .admin-container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        h1 { color: var(--dark); text-align: center; margin-bottom: 30px; }
+        .tab-menu { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .tab-btn { padding: 10px 20px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; }
+        .tab-btn.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 500; }
+        input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
+        button.btn-save { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; margin-top: 10px; }
+        .data-list { margin-top: 30px; }
+        .data-item { display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid #eee; border-radius: 10px; margin-bottom: 10px; }
+        .data-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 5px; }
+        .data-info { flex: 1; }
+        .data-actions { display: flex; gap: 10px; }
+        .btn-delete { background: #ff4d4d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: var(--primary); text-decoration: none; }
+        #login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--dark); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+        .login-box { background: white; padding: 40px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <!-- Login Sederhana (Ganti password ini nanti) -->
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2>Admin Login</h2>
+            <p>Masukkan kata sandi untuk mengelola data</p>
+            <input type="password" id="admin-pass" placeholder="Kata Sandi" style="margin: 20px 0;">
+            <button class="btn-save" onclick="checkLogin()">Masuk</button>
+            <a href="index.html" class="back-link">Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <div class="admin-container">
+        <h1>⚙ Panel Admin HIMAKOM</h1>
+        
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="switchTab('berita')">Berita</button>
+            <button class="tab-btn" onclick="switchTab('galeri')">Galeri</button>
+        </div>
+
+        <!-- Form Berita -->
+        <div id="form-berita" class="tab-content">
+            <h3>Tambah Berita Baru</h3>
+            <div class="form-group">
+                <label>Judul Berita</label>
+                <input type="text" id="news-title" placeholder="Contoh: Pelantikan Pengurus Baru">
+            </div>
+            <div class="form-group">
+                <label>Isi Berita</label>
+                <textarea id="news-content" rows="4" placeholder="Tulis berita di sini..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>URL Gambar</label>
+                <input type="text" id="news-image" placeholder="Contoh: images/pelantikan1.jpg atau link online">
+            </div>
+            <button class="btn-save" onclick="saveData('berita')">Simpan Berita</button>
+        </div>
+
+        <!-- Form Galeri -->
+        <div id="form-galeri" class="tab-content" style="display:none;">
+            <h3>Tambah Foto Galeri</h3>
+            <div class="form-group">
+                <label>Judul Foto</label>
+                <input type="text" id="gal-title" placeholder="Contoh: Dokumentasi Seminar">
+            </div>
+            <div class="form-group">
+                <label>Keterangan</label>
+                <input type="text" id="gal-desc" placeholder="Keterangan singkat">
+            </div>
+            <div class="form-group">
+                <label>URL Gambar</label>
+                <input type="text" id="gal-image" placeholder="Contoh: images/Galeri1.JPG">
+            </div>
+            <button class="btn-save" onclick="saveData('galeri')">Simpan ke Galeri</button>
+        </div>
+
+        <div class="data-list">
+            <h3>Daftar Data Terpasang</h3>
+            <div id="items-container">
+                <!-- Data dari Supabase akan muncul di sini -->
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Kembali ke Website</a>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://apqpkdlfsqxrbpvelprv.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_kfmJ_RuYCRplSuHfNF-Y2Q_Vl1igCKH';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        let currentTab = 'berita';
+
+        function checkLogin() {
+            const pass = document.getElementById('admin-pass').value;
+            if (pass === 'adminhimakom') { // Ganti password default di sini
+                document.getElementById('login-overlay').style.display = 'none';
+                loadItems();
+            } else {
+                alert('Kata sandi salah!');
+            }
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('form-berita').style.display = tab === 'berita' ? 'block' : 'none';
+            document.getElementById('form-galeri').style.display = tab === 'galeri' ? 'block' : 'none';
+            loadItems();
+        }
+
+        async function saveData(type) {
+            let payload = {};
+            if (type === 'berita') {
+                payload = {
+                    judul: document.getElementById('news-title').value,
+                    isi: document.getElementById('news-content').value,
+                    gambar_url: document.getElementById('news-image').value,
+                    created_at: new Date()
+                };
+            } else {
+                payload = {
+                    judul: document.getElementById('gal-title').value,
+                    keterangan: document.getElementById('gal-desc').value,
+                    gambar_url: document.getElementById('gal-image').value,
+                    created_at: new Date()
+                };
+            }
+
+            if (!payload.judul || !payload.gambar_url) return alert('Judul dan Gambar wajib diisi!');
+
+            const { error } = await supabase.from(type).insert([payload]);
+            if (error) {
+                alert('Gagal menyimpan: ' + error.message);
+            } else {
+                alert('Berhasil disimpan!');
+                location.reload();
+            }
+        }
+
+        async function loadItems() {
+            const container = document.getElementById('items-container');
+            container.innerHTML = 'Memuat data...';
+
+            const { data, error } = await supabase.from(currentTab).select('*').order('created_at', { ascending: false });
+            
+            if (error) {
+                container.innerHTML = 'Gagal memuat data.';
+                return;
+            }
+
+            container.innerHTML = data.map(item => `
+                <div class="data-item">
+                    <img src="${item.gambar_url}" onerror="this.src='images/HIMAKOM.jpeg'">
+                    <div class="data-info">
+                        <strong>${item.judul}</strong>
+                        <p style="font-size:12px; color:#666; margin:0;">${currentTab === 'berita' ? (item.isi ? item.isi.substring(0,50)+'...' : '') : (item.keterangan || '')}</p>
+                    </div>
+                    <div class="data-actions">
+                        <button class="btn-delete" onclick="deleteItem('${item.id}')">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function deleteItem(id) {
+            if (!confirm('Yakin ingin menghapus data ini?')) return;
+            const { error } = await supabase.from(currentTab).delete().eq('id', id);
+            if (error) alert('Gagal menghapus: ' + error.message);
+            else loadItems();
+        }
+    </script>
+</body>
+</html>

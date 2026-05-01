@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadBerita();
     loadGaleri();
     loadStruktur();
+    loadInfo();
 });
 
 async function loadBerita() {
@@ -77,19 +78,12 @@ async function loadGaleri() {
 
 async function loadStruktur() {
     const orgStructure = document.querySelector(".organization-structure");
-    // Also the block-based structure if needed
-    const strukturBlocks = document.querySelectorAll(".struktur-block");
-
     if (!orgStructure) return;
 
     db.collection("pengurus").orderBy("urutan", "asc").onSnapshot((snapshot) => {
         if (snapshot.empty) return;
 
-        // Update the top photo grid
         orgStructure.innerHTML = "";
-
-        // We might want to organize them by category for the blocks
-        // For now, let's just populate the main grid
         snapshot.forEach((doc) => {
             const item = doc.data();
             const div = document.createElement("div");
@@ -103,5 +97,41 @@ async function loadStruktur() {
             `;
             orgStructure.appendChild(div);
         });
+    });
+}
+
+async function loadInfo() {
+    db.collection("info").doc("main").onSnapshot((doc) => {
+        if (doc.exists) {
+            const data = doc.data();
+
+            // Update Visi in Beranda
+            const visionP = document.querySelector(".vision-section p");
+            if (visionP && data.visi) visionP.innerText = `"${data.visi}"`;
+
+            // Update Tentang Kami (Profil)
+            const aboutTextDiv = document.querySelector(".about-text");
+            if (aboutTextDiv) {
+                const aboutH3 = Array.from(aboutTextDiv.querySelectorAll('h3')).find(h => h.textContent.includes('Profil'));
+                if (aboutH3) {
+                    const profileP = aboutH3.nextElementSibling;
+                    if (profileP && data.tentang) profileP.innerText = data.tentang;
+                }
+
+                // Update Sejarah
+                const historyH3 = Array.from(aboutTextDiv.querySelectorAll('h3')).find(h => h.textContent.includes('Sejarah'));
+                if (historyH3) {
+                    const historyP = historyH3.nextElementSibling;
+                    if (historyP && data.sejarah) historyP.innerText = data.sejarah;
+                }
+
+                // Update Visi section in About
+                const visiH3 = Array.from(aboutTextDiv.querySelectorAll('h3')).find(h => h.textContent.includes('Visi'));
+                if (visiH3) {
+                    const visiP = visiH3.nextElementSibling;
+                    if (visiP && data.visi) visiP.innerText = `"${data.visi}"`;
+                }
+            }
+        }
     });
 }

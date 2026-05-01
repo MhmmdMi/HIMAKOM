@@ -1,12 +1,12 @@
 // Konfigurasi Firebase HIMAKOM
-// Ganti dengan konfigurasi dari Firebase Console Anda
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAuobe3ZGR45fEaeXqezYZPQmxSSjFHXuc",
+  authDomain: "com-example-aplikasii-1d9d5.firebaseapp.com",
+  databaseURL: "https://com-example-aplikasii-1d9d5-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "com-example-aplikasii-1d9d5",
+  storageBucket: "com-example-aplikasii-1d9d5.firebasestorage.app",
+  messagingSenderId: "438015696553",
+  appId: "1:438015696553:web:46d9936a06b59ab6a9d3b8"
 };
 
 // Initialize Firebase
